@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 enum StatusBarStyle: String, CaseIterable, Identifiable {
     case auto
@@ -7,14 +8,14 @@ enum StatusBarStyle: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var title: String {
+    var titleKey: LocalizedStringKey {
         switch self {
         case .auto:
-            return "Auto"
+            return "statusBarStyle.auto"
         case .light:
-            return "Light"
+            return "statusBarStyle.light"
         case .dark:
-            return "Dark"
+            return "statusBarStyle.dark"
         }
     }
 }

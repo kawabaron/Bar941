@@ -10,8 +10,8 @@ final class EditorViewModel: ObservableObject {
     @Published var settings: EditorSettings = .init()
     @Published var isRendering = false
     @Published var isSaving = false
-    @Published var errorMessage: String?
-    @Published var successMessage: String?
+    @Published var errorMessageKey: String?
+    @Published var successMessageKey: String?
     @Published var isEditorPresented = false
     @Published var shareImage: UIImage?
 
@@ -67,7 +67,7 @@ final class EditorViewModel: ObservableObject {
 
         do {
             try await photoSaveService.save(renderedImage)
-            showSuccess("写真ライブラリに保存しました")
+            showSuccess("success.saved")
         } catch {
             handle(error)
         }
@@ -82,11 +82,11 @@ final class EditorViewModel: ObservableObject {
     }
 
     func clearError() {
-        errorMessage = nil
+        errorMessageKey = nil
     }
 
     func clearSuccess() {
-        successMessage = nil
+        successMessageKey = nil
     }
 
     private func renderCurrentImage() throws {
@@ -110,21 +110,21 @@ final class EditorViewModel: ObservableObject {
         shareImage = nil
     }
 
-    private func showSuccess(_ message: String) {
+    private func showSuccess(_ messageKey: String) {
         successTask?.cancel()
-        successMessage = message
+        successMessageKey = messageKey
         successTask = Task { [weak self] in
             try? await Task.sleep(for: .seconds(2))
             guard !Task.isCancelled else { return }
-            self?.successMessage = nil
+            self?.successMessageKey = nil
         }
     }
 
     private func handle(_ error: Error) {
-        if let localizedError = error as? LocalizedError, let description = localizedError.errorDescription {
-            errorMessage = description
+        if let appError = error as? AppError {
+            errorMessageKey = appError.localizationKey
         } else {
-            errorMessage = AppError.renderFailed.errorDescription
+            errorMessageKey = AppError.renderFailed.localizationKey
         }
     }
 }

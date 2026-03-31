@@ -24,6 +24,10 @@
 		A1000000000000000000000F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000F /* EditorView.swift */; };
 		A10000000000000000000010 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* ShareSheet.swift */; };
 		A10000000000000000000011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* Assets.xcassets */; };
+		A10000000000000000000012 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000014 /* Localizable.xcstrings */; };
+		A10000000000000000000013 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000015 /* InfoPlist.xcstrings */; };
+		A10000000000000000000016 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000016 /* SettingsView.swift */; };
+		A10000000000000000000017 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000017 /* AppLocalization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		A20000000000000000000011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20000000000000000000013 /* Bar941.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bar941.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000000000000000000014 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A20000000000000000000015 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		A20000000000000000000016 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A20000000000000000000017 /* AppLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,8 @@
 			children = (
 				A20000000000000000000001 /* Bar941App.swift */,
 				A20000000000000000000011 /* Assets.xcassets */,
+				A20000000000000000000014 /* Localizable.xcstrings */,
+				A20000000000000000000015 /* InfoPlist.xcstrings */,
 				A40000000000000000000004 /* Models */,
 				A40000000000000000000005 /* Services */,
 				A40000000000000000000006 /* ViewModels */,
@@ -94,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				A20000000000000000000002 /* AppError.swift */,
+				A20000000000000000000017 /* AppLocalization.swift */,
 				A20000000000000000000003 /* EditorSettings.swift */,
 				A20000000000000000000004 /* ImageAsset.swift */,
 				A20000000000000000000005 /* RenderConfig.swift */,
@@ -127,6 +138,7 @@
 			children = (
 				A2000000000000000000000E /* HomeView.swift */,
 				A2000000000000000000000F /* EditorView.swift */,
+				A20000000000000000000016 /* SettingsView.swift */,
 				A40000000000000000000009 /* Components */,
 			);
 			path = Views;
@@ -185,10 +197,24 @@
 			};
 			buildConfigurationList = A70000000000000000000001 /* Build configuration list for PBXProject "Bar941" */;
 			compatibilityVersion = "Xcode 15.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				de,
+				en-AU,
+				en-CA,
+				en-GB,
+				en-US,
+				es-ES,
+				es-MX,
+				fr,
+				it,
+				ja,
+				ko,
+				pt-BR,
+				pt-PT,
+				zh-Hans,
+				zh-Hant,
 				Base,
 			);
 			mainGroup = A40000000000000000000001;
@@ -207,6 +233,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A10000000000000000000011 /* Assets.xcassets in Resources */,
+				A10000000000000000000012 /* Localizable.xcstrings in Resources */,
+				A10000000000000000000013 /* InfoPlist.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A10000000000000000000002 /* AppError.swift in Sources */,
+				A10000000000000000000017 /* AppLocalization.swift in Sources */,
 				A10000000000000000000001 /* Bar941App.swift in Sources */,
 				A10000000000000000000003 /* EditorSettings.swift in Sources */,
 				A10000000000000000000004 /* ImageAsset.swift in Sources */,
@@ -233,6 +262,7 @@
 				A1000000000000000000000E /* HomeView.swift in Sources */,
 				A1000000000000000000000F /* EditorView.swift in Sources */,
 				A10000000000000000000010 /* ShareSheet.swift in Sources */,
+				A10000000000000000000016 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

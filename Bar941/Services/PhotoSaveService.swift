@@ -22,7 +22,7 @@ final class PhotoSaveService: PhotoSaveServiceProtocol {
                 creationRequest.addResource(with: .photo, data: imageData, options: nil)
             }, completionHandler: { success, error in
                 if let error {
-                    continuation.resume(throwing: error)
+                    continuation.resume(throwing: AppError.photoSaveFailed)
                     return
                 }
 

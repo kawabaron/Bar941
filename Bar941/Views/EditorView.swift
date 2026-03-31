@@ -2,13 +2,23 @@ import SwiftUI
 
 struct EditorView: View {
     enum PreviewMode: String, CaseIterable, Identifiable {
-        case processed = "加工後"
-        case original = "加工前"
+        case processed
+        case original
 
         var id: String { rawValue }
+
+        var titleKey: LocalizedStringKey {
+            switch self {
+            case .processed:
+                return "editor.preview.mode.processed"
+            case .original:
+                return "editor.preview.mode.original"
+            }
+        }
     }
 
     @ObservedObject var viewModel: EditorViewModel
+    @AppStorage(AppLanguage.storageKey) private var selectedLanguageCode = AppLanguage.system.rawValue
     @State private var previewMode: PreviewMode = .processed
     @State private var draftSettings: EditorSettings
     @State private var isTimeAdjustmentExpanded = true
@@ -33,28 +43,30 @@ struct EditorView: View {
             .padding(20)
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle("編集")
+        .navigationTitle("editor.title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: shareSheetBinding, onDismiss: viewModel.dismissShareSheet) {
             if let shareImage = viewModel.shareImage {
                 ShareSheet(items: [shareImage])
             }
         }
-        .alert("エラー", isPresented: errorBinding) {
-            Button("OK", role: .cancel) {
+        .alert("common.error", isPresented: errorBinding) {
+            Button("common.ok", role: .cancel) {
                 viewModel.clearError()
             }
         } message: {
-            Text(viewModel.errorMessage ?? "")
+            if let errorMessageKey = viewModel.errorMessageKey {
+                Text(localizedKey: errorMessageKey)
+            }
         }
         .overlay(alignment: .top) {
-            if let successMessage = viewModel.successMessage {
-                toast(message: successMessage)
+            if let successMessageKey = viewModel.successMessageKey {
+                toast(messageKey: successMessageKey)
                     .padding(.top, 10)
                     .transition(.move(edge: .top).combined(with: .opacity))
             }
         }
-        .animation(.spring(response: 0.35, dampingFraction: 0.86), value: viewModel.successMessage)
+        .animation(.spring(response: 0.35, dampingFraction: 0.86), value: viewModel.successMessageKey)
         .onAppear {
             draftSettings = viewModel.settings
         }
@@ -77,9 +89,9 @@ struct EditorView: View {
     }
 
     private var previewModePicker: some View {
-        Picker("Preview", selection: $previewMode) {
+        Picker("editor.preview.mode.label", selection: $previewMode) {
             ForEach(PreviewMode.allCases) { mode in
-                Text(mode.rawValue).tag(mode)
+                Text(mode.titleKey).tag(mode)
             }
         }
         .pickerStyle(.segmented)
@@ -87,7 +99,7 @@ struct EditorView: View {
 
     private var mainPreview: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("画像プレビュー")
+            Text("editor.preview.title")
                 .font(.headline)
 
             Group {
@@ -97,7 +109,7 @@ struct EditorView: View {
                         originalImage: shouldShowOriginalOverlay ? viewModel.selectedImage : nil
                     )
                 } else {
-                    ContentUnavailableView("プレビューを準備中", systemImage: "photo")
+                    ContentUnavailableView("editor.preview.loading", systemImage: "photo")
                 }
             }
             .frame(maxWidth: .infinity)
@@ -116,13 +128,13 @@ struct EditorView: View {
     private var topPreview: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("上部拡大")
+                Text("editor.topPreview.title")
                     .font(.headline)
 
                 Spacer()
 
                 checkboxToggle(
-                    title: "元画像を透かす",
+                    titleKey: "editor.topPreview.overlay",
                     isOn: $showsOriginalOverlay
                 )
             }
@@ -134,7 +146,7 @@ struct EditorView: View {
                         originalImage: shouldShowOriginalOverlay ? viewModel.selectedImage?.croppedTopSection() : nil
                     )
                 } else {
-                    ContentUnavailableView("上部プレビューなし", systemImage: "rectangle.tophalf.inset.filled")
+                    ContentUnavailableView("editor.topPreview.empty", systemImage: "rectangle.tophalf.inset.filled")
                 }
             }
             .frame(maxWidth: .infinity, minHeight: 120)
@@ -152,17 +164,17 @@ struct EditorView: View {
 
     private var settingsCard: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Bar Style")
+            Text("editor.style.title")
                 .font(.headline)
 
-            Picker("Bar Style", selection: $draftSettings.barStyle) {
+            Picker("editor.style.title", selection: $draftSettings.barStyle) {
                 ForEach(StatusBarStyle.allCases) { style in
-                    Text(style.title).tag(style)
+                    Text(style.titleKey).tag(style)
                 }
             }
             .pickerStyle(.segmented)
 
-            Text("Auto は上端の背景から明暗を推定し、Light / Dark は文字色を固定します。")
+            Text("editor.style.description")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
@@ -176,28 +188,28 @@ struct EditorView: View {
     private var adjustmentCard: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack {
-            Text("微調整")
-                .font(.headline)
+                Text("editor.adjustment.title")
+                    .font(.headline)
 
                 Spacer()
 
-                Button("リセット") {
+                Button("editor.adjustment.reset") {
                     draftSettings.layoutAdjustments = .init()
                 }
                 .font(.footnote.weight(.semibold))
             }
 
-            Text("時間と右側アイコン群の位置・サイズを調整すると、上部拡大プレビューにすぐ反映されます。")
+            Text("editor.adjustment.description")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
 
             adjustmentDisclosureSection(
-                title: "時間",
+                titleKey: "editor.adjustment.time",
                 isExpanded: $isTimeAdjustmentExpanded,
                 adjustment: binding(for: \.time)
             )
             adjustmentDisclosureSection(
-                title: "右側アイコン",
+                titleKey: "editor.adjustment.statusIcons",
                 isExpanded: $isStatusIconsAdjustmentExpanded,
                 adjustment: binding(for: \.statusIcons)
             )
@@ -216,8 +228,13 @@ struct EditorView: View {
                     await viewModel.saveRenderedImage()
                 }
             } label: {
-                Text(viewModel.isSaving ? "保存中..." : "写真ライブラリに保存")
-                    .frame(maxWidth: .infinity)
+                if viewModel.isSaving {
+                    Text("editor.actions.saving")
+                        .frame(maxWidth: .infinity)
+                } else {
+                    Text("editor.actions.save")
+                        .frame(maxWidth: .infinity)
+                }
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
@@ -226,7 +243,7 @@ struct EditorView: View {
             Button {
                 viewModel.prepareShare()
             } label: {
-                Label("共有", systemImage: "square.and.arrow.up")
+                Label("editor.actions.share", systemImage: "square.and.arrow.up")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
@@ -235,8 +252,8 @@ struct EditorView: View {
         }
     }
 
-    private func toast(message: String) -> some View {
-        Text(message)
+    private func toast(messageKey: String) -> some View {
+        Text(localizedKey: messageKey)
             .font(.subheadline.weight(.semibold))
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -246,7 +263,7 @@ struct EditorView: View {
 
     private var errorBinding: Binding<Bool> {
         Binding(
-            get: { viewModel.errorMessage != nil },
+            get: { viewModel.errorMessageKey != nil },
             set: { newValue in
                 if !newValue {
                     viewModel.clearError()
@@ -260,25 +277,37 @@ struct EditorView: View {
     ) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             adjustmentSliderRow(
-                title: "横位置",
+                titleKey: "editor.adjustment.x",
                 value: valueBinding(for: \.xOffset, in: adjustment),
                 range: -120...120,
                 step: 1,
-                valueFormat: "%.0f px"
+                valueText: AppLocalizer.format(
+                    "editor.adjustment.value.pixels",
+                    languageCode: selectedLanguageCode,
+                    valueBinding(for: \.xOffset, in: adjustment).wrappedValue
+                )
             )
             adjustmentSliderRow(
-                title: "縦位置",
+                titleKey: "editor.adjustment.y",
                 value: valueBinding(for: \.yOffset, in: adjustment),
                 range: -80...80,
                 step: 1,
-                valueFormat: "%.0f px"
+                valueText: AppLocalizer.format(
+                    "editor.adjustment.value.pixels",
+                    languageCode: selectedLanguageCode,
+                    valueBinding(for: \.yOffset, in: adjustment).wrappedValue
+                )
             )
             adjustmentSliderRow(
-                title: "サイズ",
+                titleKey: "editor.adjustment.scale",
                 value: valueBinding(for: \.scale, in: adjustment),
                 range: 0.6...1.6,
                 step: 0.01,
-                valueFormat: "%.2f x"
+                valueText: AppLocalizer.format(
+                    "editor.adjustment.value.scale",
+                    languageCode: selectedLanguageCode,
+                    valueBinding(for: \.scale, in: adjustment).wrappedValue
+                )
             )
         }
         .padding(16)
@@ -289,7 +318,7 @@ struct EditorView: View {
     }
 
     private func adjustmentDisclosureSection(
-        title: String,
+        titleKey: LocalizedStringKey,
         isExpanded: Binding<Bool>,
         adjustment: Binding<StatusBarElementAdjustment>
     ) -> some View {
@@ -298,7 +327,7 @@ struct EditorView: View {
                 .padding(.top, 10)
         } label: {
             HStack {
-                Text(title)
+                Text(titleKey)
                     .font(.subheadline.weight(.semibold))
                 Spacer()
             }
@@ -326,14 +355,14 @@ struct EditorView: View {
         }
     }
 
-    private func checkboxToggle(title: String, isOn: Binding<Bool>) -> some View {
+    private func checkboxToggle(titleKey: LocalizedStringKey, isOn: Binding<Bool>) -> some View {
         Button {
             isOn.wrappedValue.toggle()
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: isOn.wrappedValue ? "checkmark.square.fill" : "square")
                     .font(.body)
-                Text(title)
+                Text(titleKey)
                     .font(.footnote.weight(.semibold))
             }
         }
@@ -341,20 +370,20 @@ struct EditorView: View {
     }
 
     private func adjustmentSliderRow(
-        title: String,
+        titleKey: LocalizedStringKey,
         value: Binding<CGFloat>,
         range: ClosedRange<CGFloat>,
         step: CGFloat,
-        valueFormat: String
+        valueText: String
     ) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(title)
+                Text(titleKey)
                     .font(.footnote.weight(.medium))
 
                 Spacer()
 
-                Text(String(format: valueFormat, value.wrappedValue))
+                Text(valueText)
                     .font(.footnote.monospacedDigit())
                     .foregroundStyle(.secondary)
             }
@@ -391,5 +420,11 @@ struct EditorView: View {
                 }
             }
         )
+    }
+}
+
+private extension Text {
+    init(localizedKey key: String) {
+        self.init(LocalizedStringKey(key))
     }
 }

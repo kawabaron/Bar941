@@ -13,25 +13,33 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     heroSection
                     pickerSection
-
-                    if let selectedImage = viewModel.selectedImage {
-                        previewCard(image: selectedImage)
-                    }
                 }
                 .padding(24)
             }
             .background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle("Bar941")
             .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                    .accessibilityLabel(Text("settings.title"))
+                }
+            }
             .navigationDestination(isPresented: $viewModel.isEditorPresented) {
                 EditorView(viewModel: viewModel)
             }
-            .alert("エラー", isPresented: errorBinding) {
-                Button("OK", role: .cancel) {
+            .alert("common.error", isPresented: errorBinding) {
+                Button("common.ok", role: .cancel) {
                     viewModel.clearError()
                 }
             } message: {
-                Text(viewModel.errorMessage ?? "")
+                if let errorMessageKey = viewModel.errorMessageKey {
+                    Text(localizedKey: errorMessageKey)
+                }
             }
             .onChange(of: selectedItem) { _, newValue in
                 Task {
@@ -44,19 +52,19 @@ struct HomeView: View {
 
     private var heroSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("App Store 用スクショの上部を、9:41 のきれいなステータスバーに整えます。")
+            Text("home.hero.title")
                 .font(.system(size: 28, weight: .bold, design: .rounded))
                 .foregroundStyle(heroTitleColor)
 
-            Text("写真ライブラリから iPhone スクリーンショットを選ぶだけで、上部バーを自然に差し替えて保存や共有までできます。")
+            Text("home.hero.body")
                 .font(.callout)
                 .foregroundStyle(heroBodyColor)
                 .fixedSize(horizontal: false, vertical: true)
 
             HStack(spacing: 10) {
-                featureChip(title: "9:41 固定")
-                featureChip(title: "保存")
-                featureChip(title: "共有")
+                featureChip(titleKey: "home.feature.fixedTime")
+                featureChip(titleKey: "home.feature.save")
+                featureChip(titleKey: "home.feature.share")
             }
         }
         .padding(24)
@@ -77,7 +85,7 @@ struct HomeView: View {
         let isRendering = viewModel.isRendering
 
         return VStack(alignment: .leading, spacing: 12) {
-            Text("1 枚のスクリーンショットを選択")
+            Text("home.picker.title")
                 .font(.headline)
 
             PhotosPicker(selection: $selectedItem, matching: .images) {
@@ -90,8 +98,13 @@ struct HomeView: View {
                             .font(.title3)
                     }
 
-                    Text(isRendering ? "画像を読み込み中..." : "スクリーンショットを選ぶ")
-                        .font(.headline)
+                    if isRendering {
+                        Text("home.picker.loading")
+                            .font(.headline)
+                    } else {
+                        Text("home.picker.button")
+                            .font(.headline)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 18)
@@ -103,30 +116,14 @@ struct HomeView: View {
             }
             .disabled(isRendering)
 
-            Text("主要な iPhone 縦長スクリーンショットに対応しています。")
+            Text("home.picker.support")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
     }
 
-    private func previewCard(image: UIImage) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("最近読み込んだ画像")
-                .font(.headline)
-
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .stroke(Color.black.opacity(0.06), lineWidth: 1)
-                )
-        }
-    }
-
-    private func featureChip(title: String) -> some View {
-        Text(title)
+    private func featureChip(titleKey: LocalizedStringKey) -> some View {
+        Text(titleKey)
             .font(.footnote.weight(.semibold))
             .foregroundStyle(heroChipTextColor)
             .padding(.horizontal, 12)
@@ -166,12 +163,18 @@ struct HomeView: View {
 
     private var errorBinding: Binding<Bool> {
         Binding(
-            get: { viewModel.errorMessage != nil },
+            get: { viewModel.errorMessageKey != nil },
             set: { newValue in
                 if !newValue {
                     viewModel.clearError()
                 }
             }
         )
+    }
+}
+
+private extension Text {
+    init(localizedKey key: String) {
+        self.init(LocalizedStringKey(key))
     }
 }

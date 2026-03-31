@@ -1,24 +1,24 @@
 import Foundation
 
-enum AppError: LocalizedError {
+enum AppError: Error {
     case invalidImageData
     case unsupportedImageSize
     case renderFailed
     case photoAccessDenied
     case photoSaveFailed
 
-    var errorDescription: String? {
+    var localizationKey: String {
         switch self {
         case .invalidImageData:
-            return "画像を読み込めませんでした"
+            return "error.invalidImageData"
         case .unsupportedImageSize:
-            return "この画像サイズは現在サポート対象外です"
+            return "error.unsupportedImageSize"
         case .renderFailed:
-            return "画像の加工に失敗しました"
+            return "error.renderFailed"
         case .photoAccessDenied:
-            return "写真ライブラリへのアクセスが許可されていません"
+            return "error.photoAccessDenied"
         case .photoSaveFailed:
-            return "写真ライブラリへの保存に失敗しました"
+            return "error.photoSaveFailed"
         }
     }
 }
