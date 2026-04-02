@@ -4,16 +4,18 @@ import UIKit
 
 @MainActor
 final class EditorViewModel: ObservableObject {
+    @Published private(set) var sourceImages: [UIImage] = []
     @Published var selectedImage: UIImage?
     @Published var renderedImage: UIImage?
     @Published var previewImage: UIImage?
     @Published var settings: EditorSettings = .init()
     @Published var isRendering = false
     @Published var isSaving = false
+    @Published var isPreparingShare = false
     @Published var errorMessageKey: String?
     @Published var successMessageKey: String?
     @Published var isEditorPresented = false
-    @Published var shareImage: UIImage?
+    @Published var shareImages: [UIImage] = []
 
     private let renderer: ImageRendererServiceProtocol
     private let photoSaveService: PhotoSaveServiceProtocol
@@ -29,20 +31,15 @@ final class EditorViewModel: ObservableObject {
 
     func loadPhoto(from item: PhotosPickerItem?) async {
         guard let item else { return }
+        await loadPhotos(from: [item])
+    }
+
+    func loadPhotos(from items: [PhotosPickerItem]) async {
+        guard !items.isEmpty else { return }
 
         do {
-            guard let data = try await item.loadTransferable(type: Data.self) else {
-                throw AppError.invalidImageData
-            }
-
-            guard let image = UIImage(data: data)?.normalizedImage() else {
-                throw AppError.invalidImageData
-            }
-
-            selectedImage = image
-            settings = .init()
-            try renderCurrentImage()
-            isEditorPresented = true
+            let images = try await loadImages(from: items)
+            try presentEditor(with: images)
         } catch {
             resetEditorState()
             handle(error)
@@ -60,25 +57,35 @@ final class EditorViewModel: ObservableObject {
     }
 
     func saveRenderedImage() async {
-        guard let renderedImage else { return }
+        guard !sourceImages.isEmpty else { return }
 
         isSaving = true
         defer { isSaving = false }
 
         do {
-            try await photoSaveService.save(renderedImage)
+            let outputImages = try renderOutputImages()
+            try await photoSaveService.save(outputImages)
             showSuccess("success.saved")
         } catch {
             handle(error)
         }
     }
 
-    func prepareShare() {
-        shareImage = renderedImage
+    func prepareShare() async {
+        guard !sourceImages.isEmpty else { return }
+
+        isPreparingShare = true
+        defer { isPreparingShare = false }
+
+        do {
+            shareImages = try renderOutputImages()
+        } catch {
+            handle(error)
+        }
     }
 
     func dismissShareSheet() {
-        shareImage = nil
+        shareImages = []
     }
 
     func clearError() {
@@ -87,6 +94,14 @@ final class EditorViewModel: ObservableObject {
 
     func clearSuccess() {
         successMessageKey = nil
+    }
+
+    var sourceImageCount: Int {
+        sourceImages.count
+    }
+
+    var hasMultipleSourceImages: Bool {
+        sourceImages.count > 1
     }
 
     private func renderCurrentImage() throws {
@@ -102,12 +117,59 @@ final class EditorViewModel: ObservableObject {
         previewImage = result.previewImage
     }
 
+    private func renderOutputImages() throws -> [UIImage] {
+        guard !sourceImages.isEmpty else {
+            throw AppError.renderFailed
+        }
+
+        return try sourceImages.map { image in
+            try renderer.render(image: image, settings: settings).renderedImage
+        }
+    }
+
+    private func loadImages(from items: [PhotosPickerItem]) async throws -> [UIImage] {
+        var images: [UIImage] = []
+        images.reserveCapacity(items.count)
+
+        for item in items {
+            guard let data = try await item.loadTransferable(type: Data.self) else {
+                throw AppError.invalidImageData
+            }
+
+            guard let image = UIImage(data: data)?.normalizedImage() else {
+                throw AppError.invalidImageData
+            }
+
+            images.append(image)
+        }
+
+        guard !images.isEmpty else {
+            throw AppError.invalidImageData
+        }
+
+        return images
+    }
+
+    private func presentEditor(with images: [UIImage]) throws {
+        guard let representativeImage = images.first else {
+            throw AppError.invalidImageData
+        }
+
+        sourceImages = images
+        selectedImage = representativeImage
+        settings = .init()
+        shareImages = []
+        try renderCurrentImage()
+        isEditorPresented = true
+    }
+
     private func resetEditorState() {
+        sourceImages = []
         selectedImage = nil
         renderedImage = nil
         previewImage = nil
         isEditorPresented = false
-        shareImage = nil
+        shareImages = []
     }
 
     private func showSuccess(_ messageKey: String) {

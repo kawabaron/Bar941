@@ -3,23 +3,33 @@ import UIKit
 
 protocol PhotoSaveServiceProtocol {
     func save(_ image: UIImage) async throws
+    func save(_ images: [UIImage]) async throws
 }
 
 final class PhotoSaveService: PhotoSaveServiceProtocol {
     func save(_ image: UIImage) async throws {
+        try await save([image])
+    }
+
+    func save(_ images: [UIImage]) async throws {
+        guard !images.isEmpty else { return }
+
         let authorizationStatus = await requestAuthorization()
         guard authorizationStatus == .authorized || authorizationStatus == .limited else {
             throw AppError.photoAccessDenied
         }
 
-        guard let imageData = image.pngData() else {
+        let imageDataList = images.compactMap { $0.pngData() }
+        guard imageDataList.count == images.count else {
             throw AppError.photoSaveFailed
         }
 
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             PHPhotoLibrary.shared().performChanges({
-                let creationRequest = PHAssetCreationRequest.forAsset()
-                creationRequest.addResource(with: .photo, data: imageData, options: nil)
+                for imageData in imageDataList {
+                    let creationRequest = PHAssetCreationRequest.forAsset()
+                    creationRequest.addResource(with: .photo, data: imageData, options: nil)
+                }
             }, completionHandler: { success, error in
                 if let error {
                     continuation.resume(throwing: AppError.photoSaveFailed)

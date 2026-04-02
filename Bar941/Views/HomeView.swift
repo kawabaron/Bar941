@@ -6,6 +6,7 @@ struct HomeView: View {
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var viewModel: EditorViewModel
     @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedItems: [PhotosPickerItem] = []
 
     var body: some View {
         NavigationStack {
@@ -45,6 +46,12 @@ struct HomeView: View {
                 Task {
                     await viewModel.loadPhoto(from: newValue)
                     selectedItem = nil
+                }
+            }
+            .onChange(of: selectedItems) { _, newValue in
+                Task {
+                    await viewModel.loadPhotos(from: newValue)
+                    selectedItems = []
                 }
             }
         }
@@ -89,29 +96,25 @@ struct HomeView: View {
                 .font(.headline)
 
             PhotosPicker(selection: $selectedItem, matching: .images) {
-                HStack(spacing: 12) {
-                    if isRendering {
-                        ProgressView()
-                            .tint(.white)
-                    } else {
-                        Image(systemName: "photo.on.rectangle.angled")
-                            .font(.title3)
-                    }
+                pickerButtonLabel(
+                    titleKey: isRendering ? "home.picker.loading" : "home.picker.button",
+                    systemImage: "photo.on.rectangle.angled",
+                    isPrimary: true,
+                    isLoading: isRendering
+                )
+            }
+            .disabled(isRendering)
 
-                    if isRendering {
-                        Text("home.picker.loading")
-                            .font(.headline)
-                    } else {
-                        Text("home.picker.button")
-                            .font(.headline)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 18)
-                .foregroundStyle(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(Color.accentColor)
+            Text("home.multiPicker.title")
+                .font(.headline)
+                .padding(.top, 4)
+
+            PhotosPicker(selection: $selectedItems, maxSelectionCount: 30, matching: .images) {
+                pickerButtonLabel(
+                    titleKey: isRendering ? "home.picker.loading" : "home.multiPicker.button",
+                    systemImage: "square.stack.3d.up",
+                    isPrimary: false,
+                    isLoading: isRendering
                 )
             }
             .disabled(isRendering)
@@ -120,6 +123,33 @@ struct HomeView: View {
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
+    }
+
+    private func pickerButtonLabel(
+        titleKey: LocalizedStringKey,
+        systemImage: String,
+        isPrimary: Bool,
+        isLoading: Bool
+    ) -> some View {
+        HStack(spacing: 12) {
+            if isLoading {
+                ProgressView()
+                    .tint(isPrimary ? .white : .accentColor)
+            } else {
+                Image(systemName: systemImage)
+                    .font(.title3)
+            }
+
+            Text(titleKey)
+                .font(.headline)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 18)
+        .foregroundStyle(.white)
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(Color.accentColor)
+        )
     }
 
     private func featureChip(titleKey: LocalizedStringKey) -> some View {

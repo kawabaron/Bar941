@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "ja",
   "strings" : {
+    "%lld" : {
+
+    },
     "Bar941" : {
 
     },
@@ -1429,6 +1432,196 @@
         }
       }
     },
+    "editor.batch.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beim Sichern oder Teilen werden die aktuellen Einstellungen auf alle ausgewaehlten Screenshots angewendet."
+          }
+        },
+        "en-AU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving or sharing applies the current settings to every selected screenshot."
+          }
+        },
+        "en-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving or sharing applies the current settings to every selected screenshot."
+          }
+        },
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving or sharing applies the current settings to every selected screenshot."
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving or sharing applies the current settings to every selected screenshot."
+          }
+        },
+        "es-ES" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al guardar o compartir, la configuracion actual se aplica a todas las capturas seleccionadas."
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al guardar o compartir, la configuracion actual se aplica a todas las capturas seleccionadas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'enregistrement ou le partage applique les reglages actuels a toutes les captures selectionnees."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando salvi o condividi, le impostazioni correnti vengono applicate a tutti gli screenshot selezionati."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存または共有すると、現在の設定が選択中のすべてのスクリーンショットに適用されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장하거나 공유하면 현재 설정이 선택한 모든 스크린샷에 적용됩니다."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao salvar ou compartilhar, as configuracoes atuais sao aplicadas a todas as capturas selecionadas."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao guardar ou partilhar, as definicoes atuais sao aplicadas a todas as capturas selecionadas."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存或分享时，当前设置会应用到所有已选截图。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儲存或分享時，當前設定會套用到所有已選截圖。"
+          }
+        }
+      }
+    },
+    "editor.batch.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stapel-Ausgabe"
+          }
+        },
+        "en-AU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch Output"
+          }
+        },
+        "en-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch Output"
+          }
+        },
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch Output"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch Output"
+          }
+        },
+        "es-ES" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salida por lotes"
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salida por lotes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export par lot"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esportazione multipla"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まとめて出力"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일괄 출력"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saida em lote"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saida em lote"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "批量输出"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "批次輸出"
+          }
+        }
+      }
+    },
     "editor.preview.loading" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1910,7 +2103,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto schaetzt die Helligkeit des oberen Hintergrunds. Light / Dark fixiert die Textfarbe."
+            "value" : "Auto schaetzt die Helligkeit des oberen Hintergrunds. Hell / Dunkel fixiert die Textfarbe."
           }
         },
         "en-AU" : {
@@ -1940,25 +2133,25 @@
         "es-ES" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto estima el brillo del fondo superior, mientras que Light / Dark fija el color del texto."
+            "value" : "Auto estima el brillo del fondo superior, mientras que Claro / Oscuro fija el color del texto."
           }
         },
         "es-MX" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto estima el brillo del fondo superior, mientras que Light / Dark fija el color del texto."
+            "value" : "Auto estima el brillo del fondo superior, mientras que Claro / Oscuro fija el color del texto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto estime la luminosite du fond superieur, tandis que Light / Dark fixe la couleur du texte."
+            "value" : "Auto estime la luminosite du fond superieur, tandis que Clair / Sombre fixe la couleur du texte."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto stima la luminosita dello sfondo superiore, mentre Light / Dark mantiene fisso il colore del testo."
+            "value" : "Auto stima la luminosita dello sfondo superiore, mentre Chiaro / Scuro mantiene fisso il colore del testo."
           }
         },
         "ja" : {
@@ -1970,31 +2163,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto는 상단 배경의 밝기를 추정하고, Light / Dark는 글자 색을 고정합니다."
+            "value" : "자동은 상단 배경의 밝기를 추정하고, 라이트 / 다크는 글자 색을 고정합니다."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto estima o brilho do fundo superior, enquanto Light / Dark mantem a cor do texto fixa."
+            "value" : "Auto estima o brilho do fundo superior, enquanto Claro / Escuro mantem a cor do texto fixa."
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto estima a luminosidade do fundo superior, enquanto Light / Dark fixa a cor do texto."
+            "value" : "Auto estima a luminosidade do fundo superior, enquanto Claro / Escuro fixa a cor do texto."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto 会根据顶部背景估算明暗，Light / Dark 会固定文字颜色。"
+            "value" : "自动会根据顶部背景估算明暗，浅色 / 深色会固定文字颜色。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auto 會依頂部背景推估明暗，Light / Dark 會固定文字顏色。"
+            "value" : "自動會依頂部背景推估明暗，淺色 / 深色會固定文字顏色。"
           }
         }
       }
@@ -3420,6 +3613,196 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "將 App Store 截圖頂部整理成乾淨的 9:41 狀態列。"
+          }
+        }
+      }
+    },
+    "home.multiPicker.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehrere Screenshots auswaehlen"
+          }
+        },
+        "en-AU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose multiple screenshots"
+          }
+        },
+        "en-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose multiple screenshots"
+          }
+        },
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose multiple screenshots"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose multiple screenshots"
+          }
+        },
+        "es-ES" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir varias capturas"
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir varias capturas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir plusieurs captures"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli piu screenshot"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "複数のスクリーンショットを選ぶ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "여러 스크린샷 선택"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolher varias capturas"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolher varias capturas"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择多张截图"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇多張截圖"
+          }
+        }
+      }
+    },
+    "home.multiPicker.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehrere Screenshots auswaehlen"
+          }
+        },
+        "en-AU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select multiple screenshots"
+          }
+        },
+        "en-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select multiple screenshots"
+          }
+        },
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select multiple screenshots"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select multiple screenshots"
+          }
+        },
+        "es-ES" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona varias capturas"
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona varias capturas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selectionnez plusieurs captures"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona piu screenshot"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "複数のスクリーンショットを選択"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "여러 스크린샷 선택"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione varias capturas de tela"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione varias capturas de ecra"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择多张截图"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇多張截圖"
           }
         }
       }

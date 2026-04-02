@@ -38,6 +38,9 @@ struct EditorView: View {
                 topPreview
                 adjustmentCard
                 settingsCard
+                if viewModel.hasMultipleSourceImages {
+                    batchInfoCard
+                }
                 actionButtons
             }
             .padding(20)
@@ -46,8 +49,8 @@ struct EditorView: View {
         .navigationTitle("editor.title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: shareSheetBinding, onDismiss: viewModel.dismissShareSheet) {
-            if let shareImage = viewModel.shareImage {
-                ShareSheet(items: [shareImage])
+            if !viewModel.shareImages.isEmpty {
+                ShareSheet(items: viewModel.shareImages.map { $0 as Any })
             }
         }
         .alert("common.error", isPresented: errorBinding) {
@@ -241,15 +244,53 @@ struct EditorView: View {
             .disabled(viewModel.renderedImage == nil || viewModel.isSaving || viewModel.isRendering)
 
             Button {
-                viewModel.prepareShare()
+                Task {
+                    await viewModel.prepareShare()
+                }
             } label: {
                 Label("editor.actions.share", systemImage: "square.and.arrow.up")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
             .controlSize(.large)
-            .disabled(viewModel.renderedImage == nil || viewModel.isRendering)
+            .disabled(
+                viewModel.renderedImage == nil ||
+                viewModel.isRendering ||
+                viewModel.isSaving ||
+                viewModel.isPreparingShare
+            )
         }
+    }
+
+    private var batchInfoCard: some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: "square.stack.3d.up.fill")
+                .font(.title3)
+                .foregroundStyle(Color.accentColor)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("editor.batch.title")
+                    .font(.subheadline.weight(.semibold))
+
+                Text("editor.batch.description")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Text("\(viewModel.sourceImageCount)")
+                .font(.footnote.monospacedDigit().weight(.semibold))
+                .foregroundStyle(Color.accentColor)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(Color.accentColor.opacity(0.10), in: Capsule())
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .fill(Color(uiColor: .secondarySystemBackground))
+        )
     }
 
     private func toast(messageKey: String) -> some View {
@@ -413,7 +454,7 @@ struct EditorView: View {
 
     private var shareSheetBinding: Binding<Bool> {
         Binding(
-            get: { viewModel.shareImage != nil },
+            get: { !viewModel.shareImages.isEmpty },
             set: { newValue in
                 if !newValue {
                     viewModel.dismissShareSheet()
