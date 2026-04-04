@@ -10,7 +10,6 @@ enum AppLanguage: String, CaseIterable, Identifiable {
     case englishGB = "en-GB"
     case englishAU = "en-AU"
     case englishCA = "en-CA"
-    case french = "fr"
     case italian = "it"
     case german = "de"
     case spanishSpain = "es-ES"

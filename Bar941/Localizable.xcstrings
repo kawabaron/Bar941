@@ -52,12 +52,6 @@
             "value" : "Error"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -142,12 +136,6 @@
           }
         },
         "es-MX" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -242,12 +230,6 @@
             "value" : "Guardar en Fotos"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistrer dans Photos"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -335,12 +317,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardando..."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistrement..."
           }
         },
         "it" : {
@@ -432,12 +408,6 @@
             "value" : "Compartir"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -525,12 +495,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajusta la posicion y el tamano de la hora y de los iconos de la derecha para actualizar al instante la vista superior."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajustez la position et la taille de l'heure et des icones de droite pour mettre a jour instantanement l'aperçu superieur."
           }
         },
         "it" : {
@@ -622,12 +586,6 @@
             "value" : "Restablecer"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reinitialiser"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -715,12 +673,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamano"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taille"
           }
         },
         "it" : {
@@ -812,12 +764,6 @@
             "value" : "Iconos de la derecha"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icones de droite"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -905,12 +851,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hora"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heure"
           }
         },
         "it" : {
@@ -1002,12 +942,6 @@
             "value" : "Ajuste fino"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajustements fins"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1092,12 +1026,6 @@
           }
         },
         "es-MX" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%.0f px"
-          }
-        },
-        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%.0f px"
@@ -1192,12 +1120,6 @@
             "value" : "%.2f x"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%.2f x"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1282,12 +1204,6 @@
           }
         },
         "es-MX" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Horizontal"
-          }
-        },
-        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Horizontal"
@@ -1382,12 +1298,6 @@
             "value" : "Vertical"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vertical"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1475,12 +1385,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Al guardar o compartir, la configuracion actual se aplica a todas las capturas seleccionadas."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'enregistrement ou le partage applique les reglages actuels a toutes les captures selectionnees."
           }
         },
         "it" : {
@@ -1572,12 +1476,6 @@
             "value" : "Salida por lotes"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Export par lot"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1665,12 +1563,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Preparando vista previa"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preparation de l'aperçu"
           }
         },
         "it" : {
@@ -1762,12 +1654,6 @@
             "value" : "Vista previa"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aperçu"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1852,12 +1738,6 @@
           }
         },
         "es-MX" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Original"
-          }
-        },
-        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Original"
@@ -1952,12 +1832,6 @@
             "value" : "Editada"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Retouchee"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2045,12 +1919,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vista previa de la imagen"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aperçu de l'image"
           }
         },
         "it" : {
@@ -2142,12 +2010,6 @@
             "value" : "Auto estima el brillo del fondo superior, mientras que Claro / Oscuro fija el color del texto."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auto estime la luminosite du fond superieur, tandis que Clair / Sombre fixe la couleur du texte."
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2235,12 +2097,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estilo de la barra"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Style de la barre"
           }
         },
         "it" : {
@@ -2332,12 +2188,6 @@
             "value" : "Editar"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifier"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2425,12 +2275,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin vista previa superior"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aucun apercu superieur"
           }
         },
         "it" : {
@@ -2522,12 +2366,6 @@
             "value" : "Superponer original"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Superposer l'original"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2615,12 +2453,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ampliacion superior"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zoom superieur"
           }
         },
         "it" : {
@@ -2712,12 +2544,6 @@
             "value" : "No se pudo cargar la imagen"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Impossible de charger l'image"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2805,12 +2631,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se concedio acceso a Fotos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'acces a la phototheque n'a pas ete autorise"
           }
         },
         "it" : {
@@ -2902,12 +2722,6 @@
             "value" : "No se pudo guardar en Fotos"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Impossible d'enregistrer dans la phototheque"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2995,12 +2809,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se pudo procesar la imagen"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le traitement de l'image a echoue"
           }
         },
         "it" : {
@@ -3092,12 +2900,6 @@
             "value" : "Este tamano de imagen aun no es compatible"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cette taille d'image n'est pas encore prise en charge"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3185,12 +2987,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "9:41 fijo"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "9:41 fixe"
           }
         },
         "it" : {
@@ -3282,12 +3078,6 @@
             "value" : "Guardar"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistrer"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3375,12 +3165,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compartir"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager"
           }
         },
         "it" : {
@@ -3472,12 +3256,6 @@
             "value" : "Solo elige una captura de iPhone de tu biblioteca para sustituir la barra superior de forma natural y luego guardarla o compartirla."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisissez simplement une capture d'iPhone dans votre phototheque pour remplacer naturellement la barre superieure, puis enregistrez-la ou partagez-la."
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3565,12 +3343,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acomoda la parte superior de tus capturas para App Store con una barra de estado 9:41 impecable."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remettez en forme le haut de vos captures App Store avec une barre d'etat 9:41 impeccable."
           }
         },
         "it" : {
@@ -3662,12 +3434,6 @@
             "value" : "Elegir varias capturas"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisir plusieurs captures"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3755,12 +3521,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selecciona varias capturas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selectionnez plusieurs captures"
           }
         },
         "it" : {
@@ -3852,12 +3612,6 @@
             "value" : "Elegir captura"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisir une capture"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3945,12 +3699,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cargando imagen..."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chargement de l'image..."
           }
         },
         "it" : {
@@ -4042,12 +3790,6 @@
             "value" : "Compatible con las principales capturas verticales de iPhone."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compatible avec les principales captures verticales d'iPhone."
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4135,12 +3877,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selecciona una captura"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selectionnez une capture"
           }
         },
         "it" : {
@@ -4232,12 +3968,6 @@
             "value" : "Imagen cargada recientemente"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Image chargee recemment"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4325,12 +4055,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ingles"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Anglais"
           }
         },
         "it" : {
@@ -4422,12 +4146,6 @@
             "value" : "Japones"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Japonais"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4515,12 +4233,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Idioma de la app"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Langue de l'app"
           }
         },
         "it" : {
@@ -4612,12 +4324,6 @@
             "value" : "Idioma"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Langue"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4705,12 +4411,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seguir sistema"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suivre le systeme"
           }
         },
         "it" : {
@@ -4802,12 +4502,6 @@
             "value" : "Contacto"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contact"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4895,12 +4589,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Politica de privacidad"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Politique de confidentialite"
           }
         },
         "it" : {
@@ -4992,12 +4680,6 @@
             "value" : "Enlaces"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Liens"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5085,12 +4767,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terminos de uso"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conditions d'utilisation"
           }
         },
         "it" : {
@@ -5182,12 +4858,6 @@
             "value" : "Ajustes"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglages"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5272,12 +4942,6 @@
           }
         },
         "es-MX" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auto"
-          }
-        },
-        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Auto"
@@ -5372,12 +5036,6 @@
             "value" : "Oscuro"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sombre"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5467,12 +5125,6 @@
             "value" : "Claro"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clair"
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5560,12 +5212,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guardado en Fotos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistre dans la phototheque"
           }
         },
         "it" : {

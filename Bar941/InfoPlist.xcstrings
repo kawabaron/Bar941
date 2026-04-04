@@ -58,12 +58,6 @@
             "value" : "Se usa para guardar capturas editadas en tu fototeca."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilise pour enregistrer les captures modifiees dans votre phototheque."
-          }
-        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -151,12 +145,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se usa para cargar capturas y ajustar la barra de estado."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilise pour charger des captures et ajuster la barre d'etat."
           }
         },
         "it" : {
