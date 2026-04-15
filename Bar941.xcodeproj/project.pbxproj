@@ -31,6 +31,7 @@
 		A10000000000000000000018 /* AdMobConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000018 /* AdMobConfiguration.swift */; };
 		A10000000000000000000019 /* AdsConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000019 /* AdsConsentManager.swift */; };
 		A1000000000000000000001A /* AdBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001A /* AdBannerView.swift */; };
+		A1000000000000000000001B /* ReviewPromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001B /* ReviewPromptService.swift */; };
 		F926410DBBEC955A44A6D687 /* libPods-Bar941.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98C5E2BB1CCFE69FB77D16 /* libPods-Bar941.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		A20000000000000000000018 /* AdMobConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobConfiguration.swift; sourceTree = "<group>"; };
 		A20000000000000000000019 /* AdsConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConsentManager.swift; sourceTree = "<group>"; };
 		A2000000000000000000001A /* AdBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBannerView.swift; sourceTree = "<group>"; };
+		A2000000000000000000001B /* ReviewPromptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptService.swift; sourceTree = "<group>"; };
 		AD98C5E2BB1CCFE69FB77D16 /* libPods-Bar941.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bar941.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B746ABA2692CDF190AFC5C66 /* Pods-Bar941.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bar941.debug.xcconfig"; path = "Target Support Files/Pods-Bar941/Pods-Bar941.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +86,6 @@
 				B746ABA2692CDF190AFC5C66 /* Pods-Bar941.debug.xcconfig */,
 				20E7314A6B4FB1E3DF5DC87E /* Pods-Bar941.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,6 +155,7 @@
 				A2000000000000000000000A /* ScreenshotAnalyzer.swift */,
 				A2000000000000000000000B /* ImageRendererService.swift */,
 				A2000000000000000000000C /* PhotoSaveService.swift */,
+				A2000000000000000000001B /* ReviewPromptService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -338,6 +340,7 @@
 				A1000000000000000000000A /* ScreenshotAnalyzer.swift in Sources */,
 				A1000000000000000000000B /* ImageRendererService.swift in Sources */,
 				A1000000000000000000000C /* PhotoSaveService.swift in Sources */,
+				A1000000000000000000001B /* ReviewPromptService.swift in Sources */,
 				A1000000000000000000000D /* EditorViewModel.swift in Sources */,
 				A1000000000000000000000E /* HomeView.swift in Sources */,
 				A1000000000000000000000F /* EditorView.swift in Sources */,
@@ -392,7 +395,7 @@
 				ADMOB_REWARDED_INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-3940256099942544/6978759866";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VL953U2L47;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Bar941/Info.plist;
@@ -403,7 +406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kawabaron.app.Bar941;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -423,7 +426,7 @@
 				ADMOB_REWARDED_INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-3940256099942544/6978759866";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VL953U2L47;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Bar941/Info.plist;
@@ -434,7 +437,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kawabaron.app.Bar941;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

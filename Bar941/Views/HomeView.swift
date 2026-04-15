@@ -17,11 +17,13 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: 20) {
                     heroSection
                     pickerSection
                 }
-                .padding(24)
+                .padding(.horizontal, 24)
+                .padding(.top, 12)
+                .padding(.bottom, 20)
             }
             .background(Color(uiColor: .systemGroupedBackground))
             .safeAreaInset(edge: .bottom, spacing: 0) {
@@ -49,8 +51,6 @@ struct HomeView: View {
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
             }
-            .navigationTitle("Bar941")
-            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
@@ -122,20 +122,19 @@ struct HomeView: View {
     }
 
     private func bannerSection(adUnitID: String) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Divider()
-
-            Text("home.ad.label")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 24)
-
+        VStack(alignment: .leading, spacing: 0) {
             AdBannerView(adUnitID: adUnitID)
-                .padding(.horizontal, 24)
-                .padding(.bottom, 8)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 6)
         }
-        .padding(.top, 8)
-        .background(Color(uiColor: .systemBackground))
+        .padding(.bottom, 4)
+        .background(Color(uiColor: .systemGroupedBackground))
+        .overlay(alignment: .top) {
+            Rectangle()
+                .fill(Color.black.opacity(colorScheme == .dark ? 0.18 : 0.08))
+                .frame(height: 0.5)
+        }
     }
 
     private func continueBatchFlow() async {
@@ -189,9 +188,9 @@ struct HomeView: View {
     }
 
     private var heroSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 12) {
             Text("home.hero.title")
-                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .font(.system(size: 24, weight: .bold, design: .rounded))
                 .foregroundStyle(heroTitleColor)
 
             Text("home.hero.body")
@@ -205,7 +204,7 @@ struct HomeView: View {
                 featureChip(titleKey: "home.feature.share")
             }
         }
-        .padding(24)
+        .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 28, style: .continuous)
                 .fill(
@@ -372,6 +371,7 @@ private struct BatchRewardPromptView: View {
                     Text("home.multiPicker.reward.body")
                         .font(.body)
                         .foregroundStyle(.secondary)
+                        .lineSpacing(3)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
@@ -380,43 +380,66 @@ private struct BatchRewardPromptView: View {
                 Text("home.multiPicker.reward.note")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
+                    .lineSpacing(2)
                     .fixedSize(horizontal: false, vertical: true)
+                    .padding(16)
+                    .background(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(Color.accentColor.opacity(0.08))
+                    )
             } else {
                 Text("home.multiPicker.reward.unavailable")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
+                    .lineSpacing(2)
                     .fixedSize(horizontal: false, vertical: true)
+                    .padding(16)
+                    .background(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(Color.accentColor.opacity(0.08))
+                    )
             }
 
             VStack(spacing: 12) {
-                Button(action: onContinue) {
-                    Group {
-                        if isProcessing {
-                            ProgressView()
-                                .tint(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 4)
-                        } else {
-                            if isAdReady {
+                HStack {
+                    Spacer(minLength: 0)
+
+                    Button(action: onContinue) {
+                        Group {
+                            if isProcessing {
+                                ProgressView()
+                                    .tint(.white)
+                                    .padding(.horizontal, 30)
+                                    .padding(.vertical, 4)
+                            } else if isAdReady {
                                 Text("home.multiPicker.reward.watch")
-                                    .frame(maxWidth: .infinity)
+                                    .padding(.horizontal, 28)
                             } else {
                                 Text("home.multiPicker.reward.continue")
-                                    .frame(maxWidth: .infinity)
+                                    .padding(.horizontal, 28)
                             }
                         }
                     }
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .disabled(isProcessing)
-
-                Button("home.multiPicker.reward.cancel", role: .cancel, action: onCancel)
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .disabled(isProcessing)
+
+                    Spacer(minLength: 0)
+                }
+
+                HStack {
+                    Spacer(minLength: 0)
+
+                    Button("home.multiPicker.reward.cancel", role: .cancel, action: onCancel)
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .disabled(isProcessing)
+
+                    Spacer(minLength: 0)
+                }
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(24)
     }
 }

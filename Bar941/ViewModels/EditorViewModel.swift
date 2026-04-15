@@ -16,17 +16,21 @@ final class EditorViewModel: ObservableObject {
     @Published var successMessageKey: String?
     @Published var isEditorPresented = false
     @Published var shareImages: [UIImage] = []
+    @Published private(set) var reviewPromptTrigger = 0
 
     private let renderer: ImageRendererServiceProtocol
     private let photoSaveService: PhotoSaveServiceProtocol
+    private let reviewPromptService: ReviewPromptServiceProtocol
     private var successTask: Task<Void, Never>?
 
     init(
         renderer: ImageRendererServiceProtocol,
-        photoSaveService: PhotoSaveServiceProtocol
+        photoSaveService: PhotoSaveServiceProtocol,
+        reviewPromptService: ReviewPromptServiceProtocol
     ) {
         self.renderer = renderer
         self.photoSaveService = photoSaveService
+        self.reviewPromptService = reviewPromptService
     }
 
     func loadPhoto(from item: PhotosPickerItem?) async {
@@ -66,6 +70,9 @@ final class EditorViewModel: ObservableObject {
             let outputImages = try renderOutputImages()
             try await photoSaveService.save(outputImages)
             showSuccess("success.saved")
+            if reviewPromptService.registerSuccessfulSave() {
+                reviewPromptTrigger += 1
+            }
         } catch {
             handle(error)
         }

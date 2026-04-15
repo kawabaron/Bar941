@@ -6,7 +6,8 @@ struct Bar941App: App {
     @StateObject private var adsConsentManager = AdsConsentManager()
     @StateObject private var viewModel = EditorViewModel(
         renderer: ImageRendererService(analyzer: ScreenshotAnalyzer()),
-        photoSaveService: PhotoSaveService()
+        photoSaveService: PhotoSaveService(),
+        reviewPromptService: ReviewPromptService()
     )
 
     var body: some Scene {

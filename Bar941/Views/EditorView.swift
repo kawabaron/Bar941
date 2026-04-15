@@ -1,3 +1,4 @@
+import StoreKit
 import SwiftUI
 
 struct EditorView: View {
@@ -18,12 +19,14 @@ struct EditorView: View {
     }
 
     @ObservedObject var viewModel: EditorViewModel
+    @Environment(\.requestReview) private var requestReview
     @AppStorage(AppLanguage.storageKey) private var selectedLanguageCode = AppLanguage.system.rawValue
     @State private var previewMode: PreviewMode = .processed
     @State private var draftSettings: EditorSettings
     @State private var isTimeAdjustmentExpanded = true
     @State private var isStatusIconsAdjustmentExpanded = false
     @State private var showsOriginalOverlay = false
+    @State private var reviewPromptTask: Task<Void, Never>?
 
     init(viewModel: EditorViewModel) {
         self.viewModel = viewModel
@@ -73,8 +76,24 @@ struct EditorView: View {
         .onAppear {
             draftSettings = viewModel.settings
         }
+        .onDisappear {
+            reviewPromptTask?.cancel()
+        }
         .onChange(of: draftSettings) { _, newValue in
             viewModel.apply(settings: newValue)
+        }
+        .onChange(of: viewModel.reviewPromptTrigger) { oldValue, newValue in
+            guard newValue > oldValue else { return }
+
+            reviewPromptTask?.cancel()
+            reviewPromptTask = Task {
+                try? await Task.sleep(for: .seconds(3))
+
+                guard !Task.isCancelled else { return }
+                await MainActor.run {
+                    requestReview()
+                }
+            }
         }
     }
 

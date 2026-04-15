@@ -130,7 +130,7 @@ final class AdsConsentManager: NSObject, ObservableObject {
     private func requestConsentInfoUpdate() async throws {
         let parameters = RequestParameters()
 
-        try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             ConsentInformation.shared.requestConsentInfoUpdate(with: parameters) { error in
                 if let error {
                     continuation.resume(throwing: error)
