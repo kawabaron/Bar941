@@ -28,9 +28,14 @@
 		A10000000000000000000013 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000015 /* InfoPlist.xcstrings */; };
 		A10000000000000000000016 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000016 /* SettingsView.swift */; };
 		A10000000000000000000017 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000017 /* AppLocalization.swift */; };
+		A10000000000000000000018 /* AdMobConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000018 /* AdMobConfiguration.swift */; };
+		A10000000000000000000019 /* AdsConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000019 /* AdsConsentManager.swift */; };
+		A1000000000000000000001A /* AdBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001A /* AdBannerView.swift */; };
+		F926410DBBEC955A44A6D687 /* libPods-Bar941.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD98C5E2BB1CCFE69FB77D16 /* libPods-Bar941.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20E7314A6B4FB1E3DF5DC87E /* Pods-Bar941.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bar941.release.xcconfig"; path = "Target Support Files/Pods-Bar941/Pods-Bar941.release.xcconfig"; sourceTree = "<group>"; };
 		A20000000000000000000001 /* Bar941App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar941App.swift; sourceTree = "<group>"; };
 		A20000000000000000000002 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		A20000000000000000000003 /* EditorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSettings.swift; sourceTree = "<group>"; };
@@ -54,6 +59,11 @@
 		A20000000000000000000015 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		A20000000000000000000016 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A20000000000000000000017 /* AppLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
+		A20000000000000000000018 /* AdMobConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobConfiguration.swift; sourceTree = "<group>"; };
+		A20000000000000000000019 /* AdsConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConsentManager.swift; sourceTree = "<group>"; };
+		A2000000000000000000001A /* AdBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBannerView.swift; sourceTree = "<group>"; };
+		AD98C5E2BB1CCFE69FB77D16 /* libPods-Bar941.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bar941.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B746ABA2692CDF190AFC5C66 /* Pods-Bar941.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bar941.debug.xcconfig"; path = "Target Support Files/Pods-Bar941/Pods-Bar941.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +71,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F926410DBBEC955A44A6D687 /* libPods-Bar941.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B93AD4969DA7F54CEE36653 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B746ABA2692CDF190AFC5C66 /* Pods-Bar941.debug.xcconfig */,
+				20E7314A6B4FB1E3DF5DC87E /* Pods-Bar941.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		1F425EF9C7A6A1FE1CCD5E12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD98C5E2BB1CCFE69FB77D16 /* libPods-Bar941.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A40000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
 				A40000000000000000000002 /* Bar941 */,
 				A40000000000000000000003 /* Products */,
+				1B93AD4969DA7F54CEE36653 /* Pods */,
+				1F425EF9C7A6A1FE1CCD5E12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +136,7 @@
 			children = (
 				A20000000000000000000002 /* AppError.swift */,
 				A20000000000000000000017 /* AppLocalization.swift */,
+				A20000000000000000000018 /* AdMobConfiguration.swift */,
 				A20000000000000000000003 /* EditorSettings.swift */,
 				A20000000000000000000004 /* ImageAsset.swift */,
 				A20000000000000000000005 /* RenderConfig.swift */,
@@ -118,6 +150,7 @@
 		A40000000000000000000005 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A20000000000000000000019 /* AdsConsentManager.swift */,
 				A2000000000000000000000A /* ScreenshotAnalyzer.swift */,
 				A2000000000000000000000B /* ImageRendererService.swift */,
 				A2000000000000000000000C /* PhotoSaveService.swift */,
@@ -155,6 +188,7 @@
 		A40000000000000000000009 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A2000000000000000000001A /* AdBannerView.swift */,
 				A20000000000000000000010 /* ShareSheet.swift */,
 			);
 			path = Components;
@@ -167,9 +201,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A70000000000000000000002 /* Build configuration list for PBXNativeTarget "Bar941" */;
 			buildPhases = (
+				A9BDBFC3595C2A1F68371570 /* [CP] Check Pods Manifest.lock */,
 				A30000000000000000000002 /* Sources */,
 				A30000000000000000000001 /* Frameworks */,
 				A30000000000000000000003 /* Resources */,
+				092788F32BA63360F75F0F04 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,6 +275,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		092788F32BA63360F75F0F04 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bar941/Pods-Bar941-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bar941/Pods-Bar941-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bar941/Pods-Bar941-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9BDBFC3595C2A1F68371570 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bar941-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A30000000000000000000002 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -246,6 +324,9 @@
 			files = (
 				A10000000000000000000002 /* AppError.swift in Sources */,
 				A10000000000000000000017 /* AppLocalization.swift in Sources */,
+				A10000000000000000000018 /* AdMobConfiguration.swift in Sources */,
+				A10000000000000000000019 /* AdsConsentManager.swift in Sources */,
+				A1000000000000000000001A /* AdBannerView.swift in Sources */,
 				A10000000000000000000001 /* Bar941App.swift in Sources */,
 				A10000000000000000000003 /* EditorSettings.swift in Sources */,
 				A10000000000000000000004 /* ImageAsset.swift in Sources */,
@@ -304,10 +385,14 @@
 		};
 		A80000000000000000000003 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B746ABA2692CDF190AFC5C66 /* Pods-Bar941.debug.xcconfig */;
 			buildSettings = {
+				ADMOB_APP_ID = "ca-app-pub-3940256099942544~1458002511";
+				ADMOB_BANNER_AD_UNIT_ID = "ca-app-pub-3940256099942544/2435281174";
+				ADMOB_REWARDED_INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-3940256099942544/6978759866";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = VL953U2L47;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Bar941/Info.plist;
@@ -331,10 +416,14 @@
 		};
 		A80000000000000000000004 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20E7314A6B4FB1E3DF5DC87E /* Pods-Bar941.release.xcconfig */;
 			buildSettings = {
+				ADMOB_APP_ID = "ca-app-pub-3940256099942544~1458002511";
+				ADMOB_BANNER_AD_UNIT_ID = "ca-app-pub-3940256099942544/2435281174";
+				ADMOB_REWARDED_INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-3940256099942544/6978759866";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = VL953U2L47;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Bar941/Info.plist;

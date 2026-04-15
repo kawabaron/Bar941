@@ -43,11 +43,13 @@ private enum SettingsLink: String, CaseIterable, Identifiable {
 
 struct SettingsView: View {
     @Environment(\.locale) private var locale
+    @EnvironmentObject private var adsConsentManager: AdsConsentManager
     @AppStorage(AppLanguage.storageKey) private var selectedLanguageCode = AppLanguage.system.rawValue
 
     var body: some View {
         Form {
             languageSection
+            adsSection
             linksSection
         }
         .navigationTitle("settings.title")
@@ -82,6 +84,23 @@ struct SettingsView: View {
                         Image(systemName: "arrow.up.right.square")
                             .foregroundStyle(.secondary)
                     }
+                }
+            }
+        }
+    }
+
+    private var adsSection: some View {
+        Section("settings.ads.section") {
+            Text("settings.ads.description")
+                .foregroundStyle(.secondary)
+
+            if adsConsentManager.isPrivacyOptionsRequired {
+                Button {
+                    Task {
+                        await adsConsentManager.presentPrivacyOptionsForm()
+                    }
+                } label: {
+                    Label("settings.ads.privacyOptions", systemImage: "slider.horizontal.3")
                 }
             }
         }

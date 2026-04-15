@@ -1,0 +1,6 @@
+module Pods_Bar941 {
+  umbrella header "Pods-Bar941-umbrella.h"
+
+  export *
+  module * { export * }
+}
