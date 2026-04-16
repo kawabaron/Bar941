@@ -130,11 +130,6 @@ struct HomeView: View {
         }
         .padding(.bottom, 4)
         .background(Color(uiColor: .systemGroupedBackground))
-        .overlay(alignment: .top) {
-            Rectangle()
-                .fill(Color.black.opacity(colorScheme == .dark ? 0.18 : 0.08))
-                .frame(height: 0.5)
-        }
     }
 
     private func continueBatchFlow() async {
