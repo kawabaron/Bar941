@@ -1,3 +1,4 @@
+import AppTrackingTransparency
 import Foundation
 import GoogleMobileAds
 import UserMessagingPlatform
@@ -32,7 +33,13 @@ final class AdsConsentManager: NSObject, ObservableObject {
     func prepareIfNeeded() async {
         guard !hasRequestedConsentInfo else { return }
         hasRequestedConsentInfo = true
+        await requestTrackingAuthorizationIfNeeded()
         await refreshConsent()
+    }
+
+    private func requestTrackingAuthorizationIfNeeded() async {
+        guard ATTrackingManager.trackingAuthorizationStatus == .notDetermined else { return }
+        await ATTrackingManager.requestTrackingAuthorization()
     }
 
     func prepareRewardedInterstitialIfNeeded() async {
